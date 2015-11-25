@@ -69,7 +69,6 @@ Now let's use the temporary AWS credentials obtained by using the `Set-AWSSAMLCr
  
  CreationDate                                                BucketName
  ------------                                                ----------
-
  7/25/2013 3:16:56 AM                                        mybucket1
  4/15/2015 12:46:50 AM                                       mybucket2
  4/15/2015 6:15:53 AM                                        mybucket3
