@@ -7,7 +7,7 @@ To use the cmdlet, you must have:
 
 - Active Directory Federation Services (AD FS) correctly integrated with your AWS account for console access using only your organizational credentials. See [Enabling Federation to AWS Using Windows Active Directory, AD FS, and SAML 2.0](http://blogs.aws.amazon.com/security/post/Tx71TWXXJ3UI14/Enabling-Federation-to-AWS-using-Windows-Active-Directory-ADFS-and-SAML-2-0), if you need instructions about this integration. Note that these steps are similar if you're using AD FS 3.0.
 - Version 3.7.581.0 or later of the [AWS Tools for Windows PowerShell](https://aws.amazon.com/powershell/) installed on your local workstation.
-- Visual Studio 2013 Community Edition or later
+- Visual Studio 2013 Community Edition or later.
 
 ## How to compile the PowerShell module
 ```
@@ -36,7 +36,7 @@ domain: example.com
 
 Please choose the role you would like to assume:
   [0]: arn:aws:iam::012345678912:role/ADFS-Production
-  [1]: arn:aws:iam::012345678912 :role/ADFS-Dev
+  [1]: arn:aws:iam::012345678912:role/ADFS-Dev
 
 Selection: 0
 ```
