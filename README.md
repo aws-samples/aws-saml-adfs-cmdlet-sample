@@ -6,13 +6,12 @@ A reference Windows PowerShell module that obtains and sets temporary AWS securi
 To use the cmdlet, you must have:
 
 - Active Directory Federation Services (AD FS) correctly integrated with your AWS account for console access using only your organizational credentials. See [Enabling Federation to AWS Using Windows Active Directory, AD FS, and SAML 2.0](http://blogs.aws.amazon.com/security/post/Tx71TWXXJ3UI14/Enabling-Federation-to-AWS-using-Windows-Active-Directory-ADFS-and-SAML-2-0), if you need instructions about this integration. Note that these steps are similar if you're using AD FS 3.0.
-- Version 3.7.581.0 or later of the [AWS Tools for Windows PowerShell](https://aws.amazon.com/powershell/) installed on your local workstation.
-- Visual Studio 2013 Community Edition or later.
+- To run, the latest version of the [AWS Tools for Windows PowerShell](https://aws.amazon.com/powershell/) installed on your local workstation.
+- To compile, the latest version of the [AWS SDK for .NET](https://aws.amazon.com/sdk-for-net/) installed on your local workstation.
 
 ## How to compile the PowerShell module
 ```
-PS > C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe .\AW
-SSAMLCredentials\AWSSAMLCredentials.sln /p:Configuration=Release
+PS > C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe .\AWSSAMLCredentials\AWSSAMLCredentials.sln /p:Configuration=Release
 ```
 
 ## How to use the Set-AWSSAMLCredentials cmdlet
@@ -58,7 +57,7 @@ Selection: 0
 To obtain temporary AWS credentials non-interactively, the `RoleIndex` parameter can be used to select an AWS role. In the following command, we obtain temporary credentials by using one of the roles you have pre-configured in AD FS (such as the `ADFS-Production` role [item 0 in the list above]).
 
 ```
-PS > Set-AWSSAMLCredentials -IdentityProviderUrl "https://**adfs.example.com** /adfs/ls/IdpInitiatedSignOn.aspx?loginToRp=urn:amazon:webservices" -RoleIndex 0
+PS > Set-AWSSAMLCredentials -IdentityProviderUrl "https://**adfs.example.com**/adfs/ls/IdpInitiatedSignOn.aspx?loginToRp=urn:amazon:webservices" -RoleIndex 0
 ```
 
 Now let's use the temporary AWS credentials obtained by using the `Set-AWSSAMLCredentials` cmdlet to interact with AWS service APIs.
@@ -78,7 +77,7 @@ Now let's use the temporary AWS credentials obtained by using the `Set-AWSSAMLCr
 Notice how we didn't need to provide credentials when we called `Get-S3Bucket` cmdlet. Running the `Set-AWSSAMLCredentials` cmdlet has made temporary credentials available to the AWS Tools for Windows in the current PowerShell session. These credentials will expire after 1 hour. When the credentials expire, the Windows PowerShell module can be rerun to refresh the credentials without any user interaction. Note that I have again selected the role using the `RoleIndex` parameter.
 
 ```
-PS > Set-AWSSAMLCredentials –IdentityProviderUrl "https://adfds.example.com/adfs/ls/IdpInitiatedSignOn.aspx?loginToRp=urn:amazon:webservices" -UseCurrentCredentials $true –RoleIndex 0
+PS > Set-AWSSAMLCredentials –IdentityProviderUrl "https://**adfs.example.com**/adfs/ls/IdpInitiatedSignOn.aspx?loginToRp=urn:amazon:webservices" -UseCurrentCredentials $true –RoleIndex 0
 ```
 
 **Example 2:** Now let's list all Amazon EC2 instances in the Sydney region. You may want to do this to get a list of all the EC2 instances in the region in order to manage your EC2 fleet.
