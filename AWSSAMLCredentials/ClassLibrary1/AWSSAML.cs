@@ -166,9 +166,10 @@ namespace AWSSAML
             }
 
             Console.Write("Selection: ");
-            int roleIndex = 0;
+            
             ConsoleKeyInfo key;
             int index = 0;
+
             do
             {
                 key = Console.ReadKey();
@@ -176,7 +177,7 @@ namespace AWSSAML
             } while (!Char.IsNumber(key.KeyChar) || index > awsSamlRoles.Length - 1);
             Console.WriteLine();
 
-            return awsSamlRoles[roleIndex];
+            return awsSamlRoles[index];
         }
 
         private string GetPasswordViaConsole()
